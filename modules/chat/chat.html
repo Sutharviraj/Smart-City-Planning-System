@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat | Smart City - Swachh Bharat</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="../../assets/images/logo.png" alt="Smart City" class="sidebar-logo">
+        <a href="../../dashboard.html" class="logo-text">Smart City<br><small style="color:var(--green);font-size:0.7rem;">Swachh Bharat</small></a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a>
+        <a href="../complaints/report.html" class="nav-item"><span class="nav-icon">📝</span><span>Report Issue</span></a>
+        <a href="../complaints/track.html" class="nav-item"><span class="nav-icon">🔍</span><span>Track</span></a>
+        <a href="chat.html" class="nav-item active"><span class="nav-icon">💬</span><span>Chat</span></a>
+        <a href="../transport/transport.html" class="nav-item"><span class="nav-icon">🚌</span><span>Transport</span></a>
+        <a href="../services/services.html" class="nav-item"><span class="nav-icon">📋</span><span>Services</span></a>
+        <a href="../alerts/alerts.html" class="nav-item"><span class="nav-icon">🔔</span><span>Alerts</span></a>
+        <a href="../qr-feedback/qr.html" class="nav-item"><span class="nav-icon">📱</span><span>QR Feedback</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content chat-main">
+      <header class="navbar navbar-hero">
+        <div class="navbar-bg"></div>
+        <div class="navbar-content">
+        <button class="sidebar-toggle" aria-label="Toggle menu">☰</button>
+        <h1 class="page-title navbar-title">Chat with Officer</h1>
+        <a href="../../dashboard.html" class="btn btn-outline btn-sm navbar-btn">Dashboard</a>
+        </div>
+      </header>
+
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-bubble bot">
+            <p>Hello! I'm your Smart City assistant. How can I help you today?</p>
+          </div>
+        </div>
+        <div class="chat-input-area">
+          <input type="text" id="chatInput" placeholder="Type your message..." />
+          <button class="btn btn-primary" id="sendBtn">Send</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toastContainer"></div>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="../../assets/js/utils.js"></script>
+  <script src="../../assets/js/firebase-config.js"></script>
+  <script src="../../assets/js/firebase-auth.js"></script>
+  <script src="../../assets/js/firebase-db.js"></script>
+  <script src="../../assets/js/layout.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>

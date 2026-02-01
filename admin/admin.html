@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Smart City - Swachh Bharat</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <!-- Admin gate: shown when Firebase not configured (fallback password) -->
+  <div class="modal-overlay" id="adminLoginModal" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Admin Access</h2>
+      </div>
+      <div class="modal-body">
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label for="adminPassword">Password</label>
+            <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="current-password">
+            <span class="error-msg" id="adminPasswordError"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="../dashboard.html" class="btn btn-outline">Cancel</a>
+        <button type="submit" form="adminLoginForm" class="btn btn-primary">Enter</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-layout" id="adminContent">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-icon">🏛️</span>
+        <a href="../dashboard.html" class="logo-text">Smart City</a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a>
+        <a href="#" class="nav-item active" id="navComplaints"><span class="nav-icon">⚙️</span><span>Complaints</span></a>
+        <a href="#" class="nav-item" id="navSlider"><span class="nav-icon">🖼️</span><span>Slider Photos</span></a>
+        <a href="#" class="nav-item" id="navUsers"><span class="nav-icon">👥</span><span>Users</span></a>
+        <a href="#" class="nav-item" id="navChat"><span class="nav-icon">💬</span><span>Support Chat</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="navbar navbar-hero">
+        <div class="navbar-bg"></div>
+        <div class="navbar-content">
+        <button class="sidebar-toggle" aria-label="Toggle menu">☰</button>
+        <h1 class="page-title navbar-title">Admin Panel</h1>
+        <a href="../dashboard.html" class="btn btn-outline btn-sm navbar-btn">Back</a>
+        </div>
+      </header>
+
+      <div class="page-container">
+        <!-- Main: Complaints (default) -->
+        <div id="mainAdminSection">
+        <!-- Analytics Cards -->
+        <div class="stats-grid" style="margin-bottom: 24px;">
+          <div class="stat-card">
+            <span class="stat-icon">📝</span>
+            <div>
+              <span class="stat-value" id="adminTotal">0</span>
+              <span class="stat-label">Total Complaints</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">⏳</span>
+            <div>
+              <span class="stat-value" id="adminPending">0</span>
+              <span class="stat-label">Pending</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">✅</span>
+            <div>
+              <span class="stat-value" id="adminResolved">0</span>
+              <span class="stat-label">Resolved</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart placeholder -->
+        <div class="card" style="margin-bottom: 24px;">
+          <h3 style="margin-bottom: 16px;">Complaints by Status</h3>
+          <canvas id="statusChart" width="400" height="150"></canvas>
+        </div>
+
+        <!-- Complaints Table -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3>Complaints</h3>
+            <select id="filterStatus" class="filter-select">
+              <option value="">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="assigned">Assigned</option>
+              <option value="in_progress">In Progress</option>
+              <option value="resolved">Resolved</option>
+            </select>
+          </div>
+          <div class="table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Worker</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="complaintsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+
+        <!-- Slider Photos (admin only – only admin can change hero slider) -->
+        <div class="card admin-section admin-slider-section" id="sliderSection" style="margin-top: 24px; display: none;">
+          <h3 style="margin-bottom: 8px;">🖼️ Hero Slider Photos</h3>
+          <p style="color: var(--gray-500); margin-bottom: 16px; font-size: 0.9rem;">Only admins can change the slider. Add, remove, or reorder slides shown on the dashboard.</p>
+          <div class="slider-admin-toolbar">
+            <label style="font-weight: 500;">Add slide:</label>
+            <select id="sliderAddPreset" class="slider-preset-select">
+              <option value="">Choose from assets…</option>
+              <option value="assets/images/Gemini_Generated_Image_1r9hld1r9hld1r9h.png">Smart City – Digital</option>
+              <option value="assets/images/Gemini_Generated_Image_2dvg5d2dvg5d2dvg.png">Smart City India</option>
+              <option value="assets/images/Gemini_Generated_Image_butcq5butcq5butc.png">Citizen Services</option>
+              <option value="assets/images/Gemini_Generated_Image_pxlptpxlptpxlptp.png">Swachh Bharat</option>
+              <option value="assets/images/WhatsApp Image 2026-02-01 at 4.10.03 PM.jpeg">Futuristic City</option>
+              <option value="assets/images/WhatsApp Image 2026-02-01 at 4.14.48 PM.jpeg">Smart City Vision</option>
+            </select>
+            <input type="text" id="sliderAddTitle" class="slider-title-input" placeholder="Slide title (optional)">
+            <button type="button" class="btn btn-primary btn-sm" id="sliderAddBtn">Add Slide</button>
+          </div>
+          <div class="slider-admin-list-wrap">
+            <ul class="slider-admin-list" id="sliderAdminList"></ul>
+          </div>
+          <div class="slider-admin-actions">
+            <button type="button" class="btn btn-primary" id="sliderSaveBtn">Save Slider</button>
+            <span class="slider-save-status" id="sliderSaveStatus"></span>
+          </div>
+        </div>
+
+        <!-- Users (admin only) -->
+        <div class="card admin-section" id="usersSection" style="margin-top: 24px; display: none;">
+          <h3 style="margin-bottom: 16px;">👥 User Profiles</h3>
+          <div class="table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Last login</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Admin Chat -->
+        <div class="card admin-section" id="adminChatSection" style="margin-top: 24px; display: none;">
+          <h3 style="margin-bottom: 16px;">💬 Support Chat</h3>
+          <p style="color: var(--gray-500); margin-bottom: 12px;">Select a user to view and reply to their conversation.</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="min-width: 200px; max-width: 280px;">
+              <label style="font-weight: 500;">Conversations</label>
+              <div id="conversationsList" class="conversations-list"></div>
+            </div>
+            <div style="flex: 1; min-width: 280px;">
+              <div id="adminChatArea" class="admin-chat-area" style="display: none;">
+                <div class="chat-messages" id="adminChatMessages" style="height: 300px; overflow-y: auto; padding: 12px; background: var(--gray-50); border-radius: 8px; margin-bottom: 12px;"></div>
+                <div class="chat-input-area">
+                  <input type="text" id="adminChatInput" placeholder="Type reply..." />
+                  <button class="btn btn-primary" id="adminSendBtn">Send</button>
+                </div>
+              </div>
+              <p id="adminChatPlaceholder" style="color: var(--gray-500);">Select a conversation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Assign Worker Modal -->
+  <div class="modal-overlay" id="assignModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Assign Worker</h2>
+        <button class="modal-close" onclick="closeModal('assignModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="assignComplaintId">
+        <div class="form-group">
+          <label>Worker Name</label>
+          <input type="text" id="workerName" placeholder="Enter worker name">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('assignModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="submitAssign()">Assign</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status Update Modal -->
+  <div class="modal-overlay" id="statusModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Update Status</h2>
+        <button class="modal-close" onclick="closeModal('statusModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="statusComplaintId">
+        <div class="form-group">
+          <label>New Status</label>
+          <select id="newStatus">
+            <option value="pending">Pending</option>
+            <option value="assigned">Assigned</option>
+            <option value="in_progress">In Progress</option>
+            <option value="resolved">Resolved</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('statusModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="submitStatus()">Update</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer"></div>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/firebase-config.js"></script>
+  <script src="../assets/js/firebase-auth.js"></script>
+  <script src="../assets/js/firebase-db.js"></script>
+  <script src="../assets/js/dummy-data.js"></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

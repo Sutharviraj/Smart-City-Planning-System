@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Services | Smart City - Swachh Bharat</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="../../assets/images/logo.png" alt="Smart City" class="sidebar-logo">
+        <a href="../../dashboard.html" class="logo-text">Smart City<br><small style="color:var(--green);font-size:0.7rem;">Swachh Bharat</small></a>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="../../dashboard.html" class="nav-item"><span class="nav-icon">📊</span><span>Dashboard</span></a>
+        <a href="../complaints/report.html" class="nav-item"><span class="nav-icon">📝</span><span>Report Issue</span></a>
+        <a href="../complaints/track.html" class="nav-item"><span class="nav-icon">🔍</span><span>Track</span></a>
+        <a href="../chat/chat.html" class="nav-item"><span class="nav-icon">💬</span><span>Chat</span></a>
+        <a href="../transport/transport.html" class="nav-item"><span class="nav-icon">🚌</span><span>Transport</span></a>
+        <a href="services.html" class="nav-item active"><span class="nav-icon">📋</span><span>Services</span></a>
+        <a href="../alerts/alerts.html" class="nav-item"><span class="nav-icon">🔔</span><span>Alerts</span></a>
+        <a href="../qr-feedback/qr.html" class="nav-item"><span class="nav-icon">📱</span><span>QR Feedback</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="navbar navbar-hero">
+        <div class="navbar-bg"></div>
+        <div class="navbar-content">
+        <button class="sidebar-toggle" aria-label="Toggle menu">☰</button>
+        <h1 class="page-title navbar-title">Online Services</h1>
+        <a href="../../dashboard.html" class="btn btn-outline btn-sm navbar-btn">Dashboard</a>
+        </div>
+      </header>
+
+      <div class="page-container">
+        <div class="page-header">
+          <h1>Civic Services</h1>
+          <p>Pay bills, apply for certificates, book appointments</p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card feature-card" data-modal="payBillsModal" style="cursor: pointer;">
+            <span class="card-icon">💰</span>
+            <h3>Pay Bills</h3>
+            <p>Water, electricity, tax</p>
+          </div>
+          <div class="card feature-card" data-modal="certificatesModal" style="cursor: pointer;">
+            <span class="card-icon">📜</span>
+            <h3>Apply Certificates</h3>
+            <p>Birth, income, residence</p>
+          </div>
+          <div class="card feature-card" data-modal="appointmentModal" style="cursor: pointer;">
+            <span class="card-icon">📅</span>
+            <h3>Book Appointment</h3>
+            <p>Visit government office</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Pay Bills Modal -->
+  <div class="modal-overlay" id="payBillsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Pay Bills</h2>
+        <button class="modal-close" onclick="closeModal('payBillsModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="payBillsForm">
+          <div class="form-group">
+            <label>Bill Type</label>
+            <select>
+              <option>Water</option>
+              <option>Electricity</option>
+              <option>Property Tax</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Consumer ID</label>
+            <input type="text" placeholder="Enter consumer ID">
+          </div>
+          <div class="form-group">
+            <label>Amount</label>
+            <input type="number" placeholder="Amount">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('payBillsModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="closeModal('payBillsModal'); showToast('Payment initiated (demo)', 'success');">Pay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificates Modal -->
+  <div class="modal-overlay" id="certificatesModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Apply for Certificate</h2>
+        <button class="modal-close" onclick="closeModal('certificatesModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Certificate Type</label>
+            <select>
+              <option>Birth Certificate</option>
+              <option>Income Certificate</option>
+              <option>Residence Certificate</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Documents (upload)</label>
+            <input type="file">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('certificatesModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="closeModal('certificatesModal'); showToast('Application submitted (demo)', 'success');">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Book Appointment Modal -->
+  <div class="modal-overlay" id="appointmentModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Book Appointment</h2>
+        <button class="modal-close" onclick="closeModal('appointmentModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Office / Department</label>
+            <select>
+              <option>Municipal Corporation</option>
+              <option>RTO</option>
+              <option>Revenue Office</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>Time Slot</label>
+            <select>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('appointmentModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="closeModal('appointmentModal'); showToast('Appointment booked (demo)', 'success');">Book</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer"></div>
+  <script src="../../assets/js/utils.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="../../assets/js/firebase-config.js"></script>
+  <script src="../../assets/js/firebase-auth.js"></script>
+  <script src="../../assets/js/layout.js"></script>
+  <script src="../../assets/js/auth-guard.js"></script>
+  <script src="services.js"></script>
+</body>
+</html>

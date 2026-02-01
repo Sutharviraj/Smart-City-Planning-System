@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart City Portal | Swachh Bharat - Login</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="auth-page">
+  <div class="auth-container">
+    <!-- Logo & Swachh Bharat Branding -->
+    <header class="auth-header">
+      <div class="auth-logo">
+        <img src="assets/images/logo.png" alt="Smart City" class="auth-logo-img">
+        <h1>Smart City Portal</h1>
+        <p class="swachh-tagline">Swachh Bharat | Clean India</p>
+      </div>
+    </header>
+
+    <!-- Tab Toggle -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Login</button>
+      <button class="auth-tab" data-tab="register">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="auth-form active">
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter email" required>
+        <span class="error-msg" id="loginEmailError"></span>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter password" required>
+        <span class="error-msg" id="loginPasswordError"></span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" class="auth-form">
+      <div class="form-group">
+        <label for="regName">Full Name</label>
+        <input type="text" id="regName" placeholder="Enter full name" required>
+        <span class="error-msg" id="regNameError"></span>
+      </div>
+      <div class="form-group">
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" placeholder="Enter email" required>
+        <span class="error-msg" id="regEmailError"></span>
+      </div>
+      <div class="form-group">
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" placeholder="Create password" required minlength="6">
+        <span class="error-msg" id="regPasswordError"></span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
+    </form>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/firebase-auth.js"></script>
+  <script src="assets/js/firebase-db.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
