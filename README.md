@@ -5,9 +5,23 @@
 ![Backend](https://img.shields.io/badge/Backend-Firebase-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Version](https://img.shields.io/badge/Version-1.0-blueviolet)
+![GitHub stars](https://img.shields.io/github/stars/Sutharviraj/Smart-City-Planning-System?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Sutharviraj/Smart-City-Planning-System?style=social)
+![GitHub issues](https://img.shields.io/github/issues/Sutharviraj/Smart-City-Planning-System)
+---
+## 🧩 Problem Statement
+
+Urban areas often face inefficiencies in complaint resolution, lack of transparency, and poor communication between citizens and authorities.
 
 ---
 
+## 💡 Solution
+
+This Smart City Portal provides a centralized platform where:
+- Citizens can report and track issues
+- Authorities can manage complaints efficiently
+- Communication becomes faster and transparent
+  
 ## 📌 Project Overview
 
 The **Smart City Portal** is a modern web-based platform developed to improve communication between citizens and municipal authorities.  
@@ -27,6 +41,12 @@ This system enables:
 - Enhance citizen-government interaction  
 
 ---
+## ⚡ Key Highlights
+
+- Modular JavaScript architecture
+- Real-time system design (planned with Firebase)
+- Scalable UI for future backend integration
+- User-centric design for better accessibility
 
 ## ✨ Key Features
 
@@ -158,7 +178,10 @@ This project is licensed under the MIT License.
 
 Viraj Suthar
 📧 sutharviraj02@gmail.com
+## 📢 Connect With Me
 
+- LinkedIn: https://linkedin.com/in/your-profile
+- GitHub: https://github.com/Sutharviraj
 🌐 Passionate about Web Development & Smart City Solutions
 
 ⭐ Support
