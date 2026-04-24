@@ -1,3 +1,4 @@
+
 # 🌆 Smart City Portal – Swachh Bharat | Clean India
 
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
@@ -67,7 +68,8 @@ This system enables:
 - 📸 Upload proof of work completion  
 - 🖼️ Content/slider management  
 
----
+---<img width="1024" height="1536" alt="smart" src="https://github.com/user-attachments/assets/a5768063-01ff-405e-92a1-4239ecfca08e" />
+
 
 ## 🧠 System Workflow
 
@@ -192,3 +194,6 @@ If you found this project useful:
 ⭐ Star the repository
 🍴 Fork it
 📢 Share it
+<img width="1545" height="2000" alt="2" src="https://github.com/user-attachments/assets/fed680ff-52f5-46c3-9764-151759c3f842" />
+<img width="1545" height="2000" alt="1" src="https://github.com/user-attachments/assets/84fa7cc7-0cc9-4b3e-99f7-25a4d6d10de6" />
+
