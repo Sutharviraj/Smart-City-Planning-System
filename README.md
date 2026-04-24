@@ -178,10 +178,11 @@ This project is licensed under the MIT License.
 
 Viraj Suthar
 📧 sutharviraj02@gmail.com
-## 📢 Connect With Me
+📢 Connect With Me
 
-- LinkedIn: https://linkedin.com/in/your-profile
-- GitHub: https://github.com/Sutharviraj
+LinkedIn: https://linkedin.com/in/your-profile
+GitHub: https://github.com/Sutharviraj
+
 🌐 Passionate about Web Development & Smart City Solutions
 
 ⭐ Support
